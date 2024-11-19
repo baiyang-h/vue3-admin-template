@@ -1,5 +1,6 @@
 import router from './router';
 import { useUserStore, usePermissionStore } from './store'
+import { ElMessage } from 'element-plus'
 
 import { getToken } from '@/utils/token';
 
@@ -27,6 +28,7 @@ router.beforeEach(async (to, from) => {
                     }
                 } catch (e) {
                     console.log(e)
+                    ElMessage.error(e.message)
                 }
             }
         }

@@ -23,7 +23,13 @@ const useUserStore = defineStore('user', {
     // 登录 设置token
     async login(user) {
       try {
-        const r = await api.user.request_login(user);
+        // const r = await api.user.request_login(user);
+        const r = {
+          code: 0,
+          data: 'admin-token',  // admin-token, other-token
+          message: '获取token成功',
+          success: true
+        }
         if(r.success) {
           const token = r.data.token;
           this.SET_TOKEN(token)           // 存 store
@@ -38,7 +44,17 @@ const useUserStore = defineStore('user', {
     // 设置用户信息
     async getInfo(token) {
       try {
-        const r = await api.user.request_getInfo(token);
+        // const r = await api.user.request_getInfo(token);
+        const r = {
+          code: 20000,
+          data: {
+            roles: ['admin'],
+            introduction: 'I am a super admin',
+            name: 'Super Admin'
+          },
+          message: '获取用户信息成功',
+          success: true
+        }
         if(r.success) {
           this.SET_ROLES(r.data.roles)
           this.SET_ADMIN(r.data)

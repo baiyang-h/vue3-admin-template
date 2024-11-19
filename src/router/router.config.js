@@ -3,7 +3,7 @@ import Layout from '@/layout/index.vue'
 /**
  * @description 说明
  * 直接定义在对象上，针对于应用路由
- * roles
+ * roles  表示权限，[admin, other]， 表示有这两种权限，admin表示超级管理员，如果roles没写，没有，则表示全权限
  * name   确保和菜单模块的组件内 name 名字一致（说明：下面注意事项3）
  *
  *
@@ -37,7 +37,7 @@ const constantRoutes = [
         path: '/',
         name: 'App',
         component: Layout,
-        // redirect: '/home',
+        redirect: '/home',
     },
     {
         path: '/login',

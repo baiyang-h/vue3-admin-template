@@ -70,16 +70,16 @@ export function wrapFormatterMenu(routes=[], roles) {
     // 经过 wrapFormatterRouter 处理过后 不管有没有子集 route.children 都会有，不过对于没子集的普通菜单 children 为[]
     const showingChildren = route.children.filter(childRoute => {
       if (isNeed(childRoute)) {
-        // 如果子路由下存在多个路由，则选择最后一个，后者覆盖前面的， 递归只获取最后一个
+        // 如果子路由下存在多个路由，则选择最后一个，后者覆盖前面的，对于子路由的子路由，递归只获取最后一个
         onlyLastRoute = getOnlyLastRoute(childRoute);
         return true
       } else {
         return false
       }
     })
-    // 当el-menu-item路由写法 不写children层，直接只写父层时，直接取父级
+    // 当el-menu-item路由写法 不写children层（没有子路由的时），直接只写父层时，直接取父级
     if(!showingChildren.length) onlyLastRoute = route;
-    // 对于没有定义 isSubmenu 却又写了 children 子路由的情况时，如果子路由中不写meta，那么按照父 mata
+    // 对于没有定义 isSubmenu 却又写了 children 子路由的情况时，如果子路由中不写meta，那么使用父的mata
     if(!onlyLastRoute.meta) {
       onlyLastRoute.meta = route.meta
     }
@@ -87,8 +87,8 @@ export function wrapFormatterMenu(routes=[], roles) {
   }
 
   routes.forEach(route => {
-    // 1.有权限的路由  2. meta.hidden 也是不隐藏的路由
-    if(isNeed(route)) {
+    // 1.有权限的路由  2. 不是meta.hidden为true的菜单，默认就是undefined。 即不隐藏的路由
+    if(isNeed(route)) { // 是否显示菜单
       if(route.meta && route.meta.isSubmenu) {   // Submenu 有子菜单的菜单
         const tmp = {
           path: route.path,
@@ -101,7 +101,7 @@ export function wrapFormatterMenu(routes=[], roles) {
         }
         res.push(tmp)
       } else {
-        // 获取到应该显示的最后菜单
+        // 获取到应该显示的最后菜单（这边做一些兼容写法，可能存在随意写，没有定义isSubmenu该字段的情况，理应是需要写isSubmenu该字段，如果有子菜单的话）
         let onlyLastRoute = getOnlyLastRoute(route);
         const tmp = {
           path: onlyLastRoute.path,
