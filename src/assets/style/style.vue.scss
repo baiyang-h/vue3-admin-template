@@ -1,0 +1,60 @@
+//page {
+//  color: $red;
+//  font-size: 28px;
+//  font-family: PingFang SC, PingFangSC-Regular;
+//}
+
+// 页面外出包装
+//.wrap-page {
+//  padding: 24px;
+//}
+
+// 标题
+//.h-title {
+//  font-size: 34px;
+//  line-height: 1;
+//  font-family: PingFangSC-Medium, PingFang SC;
+//}
+
+
+/* start-- 文本行数限制，超出会省略号，比如只限制2行 --start */
+.h-line-1 {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.h-line-2 {
+  -webkit-line-clamp: 2;
+}
+
+.h-line-3 {
+  -webkit-line-clamp: 3;
+}
+
+.h-line-4 {
+  -webkit-line-clamp: 4;
+}
+
+.h-line-5 {
+  -webkit-line-clamp: 5;
+}
+
+.h-line-2, .h-line-3, .h-line-4, .h-line-5 {
+  overflow: hidden;
+  word-break: break-all;
+  text-overflow: ellipsis;
+  display: -webkit-box; // 弹性伸缩盒
+  -webkit-box-orient: vertical; // 设置伸缩盒子元素排列方式
+}
+
+/* ----------------------------- end */
+
+// y 滚动条隐藏
+.scrollbar-none {
+  -ms-overflow-style: none;
+  overflow: -moz-scrollbars-none;
+  &::-webkit-scrollbar {
+    width: 0 !important
+  }
+}

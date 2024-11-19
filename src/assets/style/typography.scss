@@ -1,0 +1,56 @@
+/**
+ * 对字体进行统一规范
+ * - 字体大小
+ * - 字体类型
+ * - 行高等
+ *
+ * 字体大小快捷类 和 字体大小数字类 9-20px   20-40px
+ */
+
+.h-pf-med {
+  font-family: PingFangSC-Medium, PingFang SC;
+}
+
+.h-pf-reg {
+  font-family: PingFangSC-Regular, PingFang SC;
+}
+
+.h-dinal-bold {
+  font-family: DINAlternate-Bold, DINAlternate;
+}
+
+.h-font-xs {
+  font-size: 24px;
+}
+
+.h-font-sm {
+  font-size: 26px;
+}
+
+// 常规是 14px 这里就不设置了 默认全局设置 14px
+
+.h-font-md {
+  font-size: 30px;
+}
+
+.h-font-lg {
+  font-size: 32px;
+}
+
+.h-font-xl {
+  font-size: 34px;
+}
+
+// 定义字体(px)单位，小于20都为px单位字体
+@for $i from 9 to 20 {
+  .h-font-#{$i} {
+    font-size: $i + px;
+  }
+}
+
+// 定义字体(px)单位，大于或等于20的都为px单位字体
+@for $i from 20 through 40 {
+  .h-font-#{$i} {
+    font-size: $i + px;
+  }
+}

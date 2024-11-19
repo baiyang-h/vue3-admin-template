@@ -2,7 +2,7 @@
  * 项目中使用的方法
  */
 
-import { join } from 'node:path'
+import { join } from 'path-browserify'
 import { isUrl, isNumber } from "./common/regexp";
 
 /* ============================== 路由/菜单部分  ============================= */

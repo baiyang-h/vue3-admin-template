@@ -12,7 +12,7 @@ else if (process.env.NODE_ENV == 'production') {
 }
 */
 const service = axios.create({
-    baseURL: '/h',    // url = base url + request url       也可   process.env.REACT_APP_A  本地请求远程数据在 vue.config.js中配置代理
+    baseURL: '/api',    // url = base url + request url       也可   process.env.REACT_APP_A  本地请求远程数据在 vue.config.js中配置代理
     timeout: 10000,
     headers: {
         // application/json;charset=UTF-8

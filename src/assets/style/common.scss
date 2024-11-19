@@ -1,0 +1,54 @@
+/*
+ * - 定位属性：relative、absolute
+ * - image标签：改为inline-block
+ * - text、view都默认 box-sizing: border-box
+ * - padding 和 margin 快捷类，缩写，全写两种形式， 主要是能被2整除、5整除。例如：h-m-10, h-margin-10, h-p-l-4, h-padding-left-4
+ */
+
+.h-relative, .h-rela {
+  position: relative;
+}
+
+.h-absolute, .h-abso {
+  position: absolute;
+}
+
+// 定义内外边距，历遍1-80
+@for $i from 0 through 80 {
+  // 只要双数和能被5除尽的数
+  @if $i % 2 == 0 or $i % 5 == 0 {
+    // 如：h-margin-30或者h-m-30
+    .h-margin-#{$i}, .h-m-#{$i} {
+      margin: $i + px!important;
+    }
+
+    // 如：h-padding-30或者h-p-30
+    .h-padding-#{$i}, .h-p-#{$i} {
+      padding: $i + px!important;
+    }
+
+    @each $short, $long in l left, t top, r right, b bottom {
+      // 缩写版，结果如： h-m-l-30
+      // 定义外边距
+      .h-m-#{$short}-#{$i} {
+        margin-#{$long}: $i + px!important;
+      }
+
+      // 定义内边距
+      .h-p-#{$short}-#{$i} {
+        padding-#{$long}: $i + px!important;
+      }
+
+      // 完整版，结果如：h-margin-left-30
+      // 定义外边距
+      .h-margin-#{$long}-#{$i} {
+        margin-#{$long}: $i + px!important;
+      }
+
+      // 定义内边距
+      .h-padding-#{$long}-#{$i} {
+        padding-#{$long}: $i + px!important;
+      }
+    }
+  }
+}
