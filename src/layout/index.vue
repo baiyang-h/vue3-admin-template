@@ -1,3 +1,34 @@
+<template>
+  <el-container id="app-layout">
+    <el-aside :width="wrapAsideWidth" class="scrollbar-none">
+      <!-- 侧边菜单 -->
+      <sidebar :collapse="collapse" />
+    </el-aside>
+    <el-container>
+      <el-header>
+        <div class="navigation">
+          <!-- 侧边伸缩按钮 -->
+          <collapsed-icon v-model="collapse" />
+          <!-- 面包屑 -->
+          <breadcrumb />
+          <!-- 导航 -->
+          <navbar
+            @sign-out="onSignOut"
+            @system-set="onSystemSet"
+          />
+        </div>
+        <!-- 浏览标签 -->
+        <tag-view />
+      </el-header>
+      <el-main>
+        <app-main />
+      </el-main>
+    </el-container>
+  </el-container>
+  <!-- 项目设置 -->
+  <system-drawer v-model="systemDrawerVisible" />
+</template>
+
 <script setup>
 import { ref, computed } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
@@ -41,37 +72,6 @@ function onSystemSet() {
 }
 
 </script>
-
-<template>
-  <el-container id="app-layout">
-    <el-aside :width="wrapAsideWidth" class="scrollbar-none">
-      <!-- 侧边菜单 -->
-      <sidebar :collapse="collapse" />
-    </el-aside>
-    <el-container>
-      <el-header>
-        <div class="navigation">
-          <!-- 侧边伸缩按钮 -->
-          <collapsed-icon v-model:collapse="collapse" />
-          <!-- 面包屑 -->
-          <breadcrumb />
-          <!-- 导航 -->
-          <navbar
-            @sign-out="onSignOut"
-            @system-set="onSystemSet"
-          />
-        </div>
-        <!-- 浏览标签 -->
-        <tag-view />
-      </el-header>
-      <el-main>
-        <app-main />
-      </el-main>
-    </el-container>
-  </el-container>
-  <!-- 项目设置 -->
-  <system-drawer v-model="systemDrawerVisible" />
-</template>
 
 <style scoped lang="scss">
 #app-layout {

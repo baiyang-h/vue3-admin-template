@@ -1,3 +1,20 @@
+<template>
+  <el-menu
+    :collapse="collapse"
+    :collapse-transition="false"
+    :unique-opened="true"
+    :default-active="selectedKeys"
+    :default-openeds="openKeys"
+    @select="selectMenuItem"
+  >
+    <sidebar-item
+      v-for="menuItem in menu"
+      :key="menuItem.path"
+      :menuItem="menuItem"
+    />
+  </el-menu>
+</template>
+
 <script setup>
 import { computed, ref, watch, onMounted } from "vue";
 import { useRoute, useRouter } from 'vue-router'
@@ -15,7 +32,7 @@ const props = defineProps({
 const router = useRouter()
 const route = useRoute()
 
-let selectedKeys = ref();     // 选中的keys
+let selectedKeys = ref();             // 选中的keys
 let openKeys = ref([]);         // 展开的 submenu keys
 let preOpenKeys = ref([]);      // 前一个展开的 submenu keys
 
@@ -67,20 +84,3 @@ watch(
   }
 )
 </script>
-
-<template>
-  <el-menu
-    :collapse="collapse"
-    :collapse-transition="false"
-    :unique-opened="true"
-    :default-active="selectedKeys"
-    :default-openeds="openKeys"
-    @select="selectMenuItem"
-  >
-    <sidebar-item
-      v-for="menuItem in menu"
-      :key="menuItem.path"
-      :menuItem="menuItem"
-    />
-  </el-menu>
-</template>

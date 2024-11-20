@@ -23,8 +23,8 @@ const useAppStore = defineStore('app', {
       // 清空 store 上的状态
       this.SET_MENU([])
       permission.SET_ROUTES([])
-      tagView.DEL_ALL_CACHED_VIEWS(null)
-      tagView.DEL_ALL_VISITED_VIEWS(null)
+      tagView.DEL_ALL_CACHED_VIEWS()
+      tagView.DEL_ALL_VISITED_VIEWS()
       user.SET_TOKEN(undefined)
       user.SET_ROLES([])
       user.SET_ADMIN({})

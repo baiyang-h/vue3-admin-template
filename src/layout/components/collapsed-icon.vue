@@ -1,22 +1,22 @@
 <template>
   <div class="collapsed-icon">
-    <el-icon v-if="collapse" @click="$emit('update:collapse', false)"><Fold /></el-icon>
-    <el-icon v-else  @click="$emit('update:collapse', true)"><Expand /></el-icon>
+    <el-icon v-if="model" @click="model=false"><Fold /></el-icon>
+    <el-icon v-else  @click="model=true"><Expand /></el-icon>
   </div>
 </template>
 
 <script setup>
 import { Expand, Fold } from '@element-plus/icons-vue'
 
-defineProps({
-  collapse: {
-    type: Boolean,
-    default: false
-  }
-})
-defineEmits(['update:collapse'])
+const model = defineModel()
 
-
+// defineProps({
+//   collapse: {
+//     type: Boolean,
+//     default: false
+//   }
+// })
+// defineEmits(['update:collapse'])
 </script>
 
 <style scoped lang="scss">

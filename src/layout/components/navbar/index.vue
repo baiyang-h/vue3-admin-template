@@ -24,7 +24,7 @@ const emit = defineEmits(['signOut', 'systemSet'])
 
 // 打开github
 function onClickGithub() {
-  window.open('https://github.com/baiyang-h/vue-admin-template')
+  window.open('https://github.com/baiyang-h/vue3-admin-template')
 }
 
 // 退出

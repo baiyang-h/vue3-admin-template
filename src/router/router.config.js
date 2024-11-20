@@ -32,6 +32,7 @@ import nestedRouter from './modules/nested';
 import cacheRouter from './modules/cache'
 import UtilRouter from './modules/util'
 
+// 通用路由
 const constantRoutes = [
     {
         path: '/',
@@ -68,6 +69,7 @@ const constantRoutes = [
     },
 ]
 
+// 应用路由，即菜单路由
 const appRoutes = [
     {
         path: '/home',

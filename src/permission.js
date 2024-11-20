@@ -8,7 +8,7 @@ router.beforeEach(async (to, from) => {
     const user = useUserStore()
     const permission = usePermissionStore()
     const token = getToken();
-    if(token){
+    if(token && (token !== 'undefined' && token !== 'null')){
         if(to.path === '/login') {   // 如果在有 token 的情况下，去往 login 页面，则默认到 /
             return '/'
         } else {

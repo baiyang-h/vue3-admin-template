@@ -31,7 +31,7 @@ const useUserStore = defineStore('user', {
           success: true
         }
         if(r.success) {
-          const token = r.data.token;
+          const token = r.data || '';
           this.SET_TOKEN(token)           // 存 store
           setToken(token);                // 存 cookie
         } else {
