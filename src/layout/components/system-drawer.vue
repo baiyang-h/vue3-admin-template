@@ -1,25 +1,19 @@
 <template>
   <el-drawer
-      :value="modelValue"
+      v-model="model"
       title="项目设置"
       direction="rtl"
-      @close="close"
+      @close="model=false"
   >
     <span>Hi, there!</span>
   </el-drawer>
 </template>
 
 <script setup>
-
-defineProps({
-  modelValue: {
-    type: Boolean,
-    default: false
-  },
+const model = defineModel({
+  default: false
 })
-const emit =defineEmits(['update:modelValue'])
 
 function close() {
-  emit('update:modelValue', false)
 }
 </script>

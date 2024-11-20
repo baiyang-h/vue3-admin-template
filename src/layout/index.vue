@@ -13,6 +13,7 @@
           <breadcrumb />
           <!-- 导航 -->
           <navbar
+            @personal-set="onPersonalSet"
             @sign-out="onSignOut"
             @system-set="onSystemSet"
           />
@@ -25,6 +26,8 @@
       </el-main>
     </el-container>
   </el-container>
+  <!-- 个人设置 -->
+  <personal-set-dialog v-model="personalSetDialogVisible" />
   <!-- 项目设置 -->
   <system-drawer v-model="systemDrawerVisible" />
 </template>
@@ -34,18 +37,24 @@ import { ref, computed } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import { ElMessageBox } from 'element-plus'
 import { useAppStore } from '@/store'
-import { Sidebar, CollapsedIcon, Breadcrumb, Navbar, TagView, SystemDrawer, AppMain } from './components'
+import { Sidebar, CollapsedIcon, Breadcrumb, Navbar, TagView, SystemDrawer, AppMain, PersonalSetDialog } from './components'
 
 const router = useRouter()
 const route = useRoute()
 
 const collapse = ref(false)
+const personalSetDialogVisible = ref(false)
 const systemDrawerVisible = ref(false)
 
 const wrapAsideWidth = computed(() => collapse.value ? '65px' : '200px')
 
+// 个人设置
+const onPersonalSet = () => {
+  personalSetDialogVisible.value = true
+}
+
 // 退出
-function onSignOut() {
+const onSignOut = () => {
   ElMessageBox.confirm(
     '你确定要退出吗？',
     '提示',
@@ -67,7 +76,7 @@ function onSignOut() {
 }
 
 // 系统设置
-function onSystemSet() {
+const onSystemSet = () => {
   systemDrawerVisible.value = true
 }
 

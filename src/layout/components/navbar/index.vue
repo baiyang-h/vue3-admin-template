@@ -8,35 +8,21 @@
         <div class="personal bar"></div>
         <template #dropdown>
           <el-dropdown-menu>
-            <el-dropdown-item>个人设置</el-dropdown-item>
-            <el-dropdown-item @click="signOut">退出登录</el-dropdown-item>
+            <el-dropdown-item @click="$emit('personal-set')">个人设置</el-dropdown-item>
+            <el-dropdown-item @click="$emit('signOut')">退出登录</el-dropdown-item>
           </el-dropdown-menu>
         </template>
       </el-dropdown>
-      <span class="bar iconfont icon-shezhi" @click="onSystemSet"></span>
+      <span class="bar iconfont icon-shezhi" @click="$emit('systemSet')"></span>
     </div>
   </div>
 </template>
 
 <script setup>
-
-const emit = defineEmits(['signOut', 'systemSet'])
-
 // 打开github
 function onClickGithub() {
   window.open('https://github.com/baiyang-h/vue3-admin-template')
 }
-
-// 退出
-function signOut() {
-  emit('signOut')
-}
-
-// 设置
-function onSystemSet() {
-  emit('systemSet')
-}
-
 </script>
 
 <style scoped lang="scss">
@@ -44,7 +30,7 @@ function onSystemSet() {
   display: flex;
   justify-content: flex-end;
   .iconfont {
-    font-size: 18px;
+    font-size: 22px;
   }
   .bar {
     cursor: pointer;

@@ -7,38 +7,14 @@
   </ul>
 </template>
 
-<script>
-export default {
-  name: "ContextMenu",
-
-  props: {
-    // 刷新
-    refresh: {
-      type: Function,
-      default: () => {}
-    },
-    // 关闭tag
-    close: {
-      type: Function,
-      default: () => {}
-    },
-    // 关闭其他
-    closeOther: {
-      type: Function,
-      default: () => {}
-    },
-    // 关闭所有
-    closeAll: {
-      type: Function,
-      default: () => {}
-    },
-    // 选择的tagView 的 tagRoute 信息
-    selected: {
-      type: Object,
-      default: () => ({})
-    }
-  },
-}
+<script setup>
+defineProps({
+  // 选择的tagView 的 tagRoute 信息
+  selected: {
+    type: Object,
+    default: () => ({})
+  }
+})
 </script>
 
 <style scoped lang="scss">

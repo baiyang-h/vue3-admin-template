@@ -98,7 +98,7 @@ export default {
 
     // 初始化
     function init() {
-      // 得到是 route.cofig 中 mata.affix 为 true 的数组，即在tagViews中默认显示的 route
+      // 得到是 route.config 中 mata.affix 为 true 的数组，即在tagViews中默认显示的 route
       const affixRoutes = filterAffixRoute(flatAppRoutes.value);
       // 初始化会显示的 tags， 此时还不涉及到缓存 keep-alive， 要点击后才会有缓存
       affixRoutes.forEach(tagRoute => {
