@@ -10,7 +10,7 @@ export default {
             path: 'index',
             name: 'Cache',
             meta: {
-                title: '缓存模块测试',
+                title: '缓存菜单',
                 icon: 'icon-huancunzhongxin'
             },
             component: () => import('@/views/cache/index.vue')

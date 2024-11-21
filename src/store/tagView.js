@@ -15,7 +15,7 @@ const useTagViewStore = defineStore('tagView', {
       if(this.visitedViews.some(v => v.path === view.path)) return;
       this.visitedViews.push(view)
     },
-    // 添加单个 cachedView
+    // 添加单个 cachedView，主要为了 keep-alive 的功能
     ADD_CACHED_VIEW(view) {
       if(this.cachedViews.includes(view.name)) return;
       // 如果 meta.noCache: true 不需要缓存
@@ -64,7 +64,7 @@ const useTagViewStore = defineStore('tagView', {
     addVisitedView(view) {
       this.ADD_VISITED_VIEW(view)
     },
-    // 添加 cachedView
+    // 添加 cachedView，主要为了 keep-alive 的功能
     addCachedView(view) {
       this.ADD_CACHED_VIEW(view)
     },

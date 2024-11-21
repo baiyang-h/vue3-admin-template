@@ -100,8 +100,9 @@ export default {
     function init() {
       // 得到是 route.config 中 mata.affix 为 true 的数组，即在tagViews中默认显示的 route
       const affixRoutes = filterAffixRoute(flatAppRoutes.value);
-      // 初始化会显示的 tags， 此时还不涉及到缓存 keep-alive， 要点击后才会有缓存
+      // 初始化会显示路由中定义要默认显示的的 tags， 此时还不涉及到缓存 keep-alive，因为还没点击过相应的tag即菜单，只有当前路由的需要展示， 要点击后才会有缓存即记录
       affixRoutes.forEach(tagRoute => {
+        // 默认因为路由文件中配置的 mata.affix 需要显示的 tags
         tagViewStore.addVisitedView(tagRoute)
       })
       // 初始化的当前路由 tag 需要添加到缓存列表中
@@ -113,7 +114,7 @@ export default {
     // 增加标签栏的 tagView
     function addView(tagRoute) {
       // 1.首先要有 name 属性，并且是和菜单组件的name一致，
-      // 2.tagView显示的路由必须是在 appRoute 菜单应用路由中的，不然如果直接修改url的形式改变路由，类似于 /login 这类也会显示了在 tagsView 中了，所以确保是 应用路由的 tagRoute
+      // 2.tagView显示的路由必须是在 appRoute 菜单应用路由中的，不然如果直接修改url的形式改变路由，类似于 /login 这类也会显示了在 tagsView 中了，所以确保是 应用路由（菜单）的 tagRoute
       if(tagRoute.name && flatAppRoutes.value.some(route => route.path === tagRoute.path) ) {
         tagViewStore.addView(tagRoute)
       }
