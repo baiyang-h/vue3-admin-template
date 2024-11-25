@@ -45,8 +45,8 @@ const usePermissionStore = defineStore('permission', {
       accessedRoutes.forEach(route => {
         router.addRoute(route)
       })
-      console.log('所有应用routes：', accessedRoutes)
-      console.log('所有routes：', router, router.getRoutes())
+      console.log('所有应用routes：appRoutes', accessedRoutes)
+      console.log('所有routes', router, router.getRoutes())
     }
   }
 })
