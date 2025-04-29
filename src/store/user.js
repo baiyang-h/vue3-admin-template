@@ -35,10 +35,10 @@ const useUserStore = defineStore('user', {
           this.SET_TOKEN(token)           // 存 store
           setToken(token);                // 存 cookie
         } else {
-          throw new Error(r.message);
+          return Promise.reject(r)
         }
       } catch (e) {
-        throw new Error(e);
+        return Promise.reject(e)
       }
     },
     // 设置用户信息
@@ -60,10 +60,10 @@ const useUserStore = defineStore('user', {
           this.SET_ADMIN(r.data)
           return r.data.roles
         } else {
-          throw new Error(r.message);
+          return Promise.reject(r)
         }
       } catch (e) {
-        throw new Error(e);
+        return Promise.reject(e)
       }
     }
   }
